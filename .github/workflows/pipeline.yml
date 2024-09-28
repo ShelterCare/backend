@@ -2,9 +2,9 @@ name: CI/CD Pipeline for ShelterCare BackEnd Project in Python
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "master", "dev" ]
 
 concurrency:
   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
