@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from src.api.api import router as api_router
 
 
 app = FastAPI(
@@ -6,7 +7,4 @@ app = FastAPI(
     version="1.0",
     docs="/docs"
 )
-
-@app.get("/test")
-async def test():
-    return "Test route"
+app.include_router(api_router)
