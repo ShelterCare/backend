@@ -21,13 +21,13 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     op.create_table(
         "users",
-        sa.Column("id", primary_key=True, autoincrement=True),
+        sa.Column("id", sa.Integer, primary_key=True, autoincrement=True),
         sa.Column("first_name", sa.String(20), nullable=False),
         sa.Column("last_name", sa.String(20), nullable=False),
         sa.Column("birthdate", sa.DateTime, nullable=False),
         sa.Column("cf", sa.String(16), nullable=False),
-        sa.Column("address", sa.Column(30), nullable=False),
-        sa.Column("city", sa.Column(30), nullable=False),
+        sa.Column("address", sa.String(30), nullable=False),
+        sa.Column("city", sa.String(30), nullable=False),
         sa.Column("cap", sa.Integer, nullable=True, server_default=None),
         sa.Column("state", sa.String(20), nullable=True, server_default=None),
         sa.Column("telephone", sa.Integer, nullable=True, server_default=None),
@@ -37,4 +37,4 @@ def upgrade() -> None:
 # first_name, last_name, birthday, sex, cf, street, cap, city, state, telephone, email, documents
 
 def downgrade() -> None:
-    op.drop_table("user")
+    op.drop_table("users")
